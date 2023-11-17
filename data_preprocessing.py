@@ -5,8 +5,6 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 import datetime
-from google_trend_scraper import scrape_save_movies_trends
-from imdb_rating_scraper import * 
 from datetime import timedelta
 import re
 
@@ -28,7 +26,7 @@ def create_imdb_movie_dataset():
     res.to_csv('MovieSummaries/movies_imdb_ids.csv')
 
 
-def clean_movie_dataset(drop_no_revenue): 
+def clean_movie_metadata_dataset(drop_no_revenue = True): 
     columns = ['Wikipedia movie ID', 'Freebase movie ID', 'name', 'release date', 
         'box office revenue', 'runtime', 'languages', 'countries', 'genres']
 
@@ -40,6 +38,8 @@ def clean_movie_dataset(drop_no_revenue):
         box_office  = df.loc[~df['box office revenue'].isna()].copy(deep = True)
     else: 
         box_office = df.copy(deep=True)
+    
+    box_office.fillna(0, inplace = True)
 
     dates = box_office['release date'].apply(lambda x : pd.to_datetime( x, format='%Y-%m-%d', errors='coerce')).copy(deep = True)
     box_office.loc[:,'release date'] = dates
@@ -47,6 +47,25 @@ def clean_movie_dataset(drop_no_revenue):
     box_office = box_office.dropna(subset=['release date']).copy()
 
     return box_office
+
+def extract_from_dictionary(df, column): 
+    all_genre = set()
+
+
+    # find set of all genre
+    for i in range(len(df)): 
+        genres = eval(df[column].iloc[i]).values()
+        all_genre.update(list(genres))
+
+    # set column corresponding to genre to 1 or 0 if the genre is present
+    for g in all_genre: 
+        df[g] = df[column].str.contains(g)
+
+    new_column_names = []
+    for c in df.columns: 
+        new_column_names.append(c.replace(' ', '_'))
+
+    df.columns = new_column_names
 
 
 def standardize_dates(dataset, days_gap): 
