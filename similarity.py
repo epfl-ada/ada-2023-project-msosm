@@ -10,7 +10,7 @@ from collections import Counter
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
-nlp = spacy.load("xx_ent_wiki_sm")
+ner = spacy.load("en_core_web_sm")
 tokenizer = RegexpTokenizer(r'\w+')
 
 #####################################
@@ -28,9 +28,10 @@ def magnitude(vector):
 #####################################
 
 def is_name(word):
-    doc = nlp(word)
-    for token in doc:
-        if token.ent_type_ == "PERSON":
+    # Named Entity Recognition for Person's Name
+    doc = ner(word)
+    for word in doc.ents:
+        if word.label_ == "PERSON":
             return True
     return False
 
@@ -52,6 +53,10 @@ def get_infinitive_form(verb):
 #####################################
 
 def cosine_similarity(v1, v2):
+    # Compute only cosine similarity for the first most common words
+    # Otherwise long plots have more probabilities to have similar words with other plots
+    v1 = dict(Counter(v1).most_common(100))
+    v2 = dict(Counter(v2).most_common(100))
     return dot_product(v1, v2) / (magnitude(v1) * magnitude(v2))
 
 def preprocess_text(text):
@@ -65,8 +70,7 @@ def preprocess_text(text):
     # Sometimes people's name can also be verbs, therefore we should remove them first
     # For instance, to carol: to sing especially in a joyful manner
     # Also it may induce similarities which are not there. There are both Harry's in Harry Potter and Mamma Mia without having anything in common
-    # TODO: function not working properly
-    # words = list(filter(lambda word: not is_name(word), words))
+    words = list(filter(lambda word: not is_name(word), words))
     
     # Separate verbs and others to obtain the infinitive form and be able to generalizes
     verbs = list(filter(is_verb, words))
@@ -75,7 +79,6 @@ def preprocess_text(text):
     # Transform verbs into their infinitive form
     verbs = [get_infinitive_form(verb) for verb in verbs]
 
-    # Count words appearance and keep the 100 most common
-    words = Counter(verbs + others).most_common(100)
-
+    # Count words appearance
+    words = Counter(verbs + others)
     return dict(words)
