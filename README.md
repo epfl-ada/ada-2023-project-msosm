@@ -52,8 +52,7 @@ After text preprocesing, plot similarity can be computed in two ways:
 
 ### Movie metadata preprocessing
 
-Firstly we removed all the movies without movie_box_office_reveneue (attempts to find datasets with additional box_office_revenue weren’t successful). We then normalized the format of the date, while dropping the one which didn’t respect the %Y-%m-%d' format. 
-We then merged the movie.metadata dataset with the imbd one (which contained imbd id for each movie). Finally, we extracted the features that were encoded in a dictionary (language, genre, country) and added them to the dataset with onehot encoding. 
+Firstly we removed all the movies without movie_box_office_reveneue (attempts to find datasets with additional box_office_revenue weren’t successful). We extracted the year from all the dates. Then we merged the movie.metadata dataset with the imbd one (which contained imbd id for each movie). Finally, we extracted the features that were encoded in a dictionary (language, genre, country) and added them to the dataset with onehot encoding. 
 
 ### Movie aging
 For this part, we will use the [dataset imdb ratings over time](#Dataset-imdb-ratings-over-time). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the metadata of the movies on the difference in ratings (positive if the ratings increased and negative if they decreased over the years) to determine which features have greater influence on the popularity of a movie over time. 
