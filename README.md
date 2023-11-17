@@ -49,13 +49,13 @@ After text preprocesing, plot similarity can be computed in two ways:
 - **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly.A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
 - **LDA and clustering**: Computing cosine distance with the frequency vectors lacks some complexity and fails to capture generalized topics. Using LDA algorithm, broaded topics can be extrapolated and more real similarity can be captured. Furthermore, it makes it easier for a clustering analysis by topic. In this way,  a movie which belongs to a big cluster and the closer it is to the center of the cluster, the less original is a movie.
  
-### Movie aging
+
 ### Movie metadata preprocessing
 
 Firstly we removed all the movies without movie_box_office_reveneue (attempts to find datasets with additional box_office_revenue weren’t successful). We then normalized the format of the date, while dropping the one which didn’t respect the %Y-%m-%d' format. 
 We then merged the movie.metadata dataset with the imbd one (which contained imbd id for each movie). Finally, we extracted the features that were encoded in a dictionary (language, genre, country) and added them to the dataset with onehot encoding. 
 
-
+### Movie aging
 For this part, we will use the [dataset imdb ratings over time](#Dataset-imdb-ratings-over-time). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the metadata of the movies on the difference in ratings (positive if the ratings increased and negative if they decreased over the years) to determine which features have greater influence on the popularity of a movie over time. 
 
 ### Most influential feature for revenue over time
