@@ -23,7 +23,7 @@ This project aims to investigate on the above stated topic. With this goal in mi
 
 ## Additional datasets
 
-#### Dataset imdb ratings over time
+#### Dataset imdb ratings over time {#imdb_ratings}
 
 In order to understand how the ratings of certain movies has evolved over time, we used an the API provided by [WaybackMachine](https://archive.org/help/wayback_api.php) to get a snapshot of the [IMBD.com](https://www.imdb.com/) page of each movie one year and five years after the release. In this way we were able to obtain the rating and the number of people who voted, while associating them with the IMBD identifier provided in the [IMDB database](https://datasets.imdbws.com/title.basics.tsv.gz) and with the original dataset through the name of the movie.
 
