@@ -62,15 +62,15 @@ Finally, to answer the question of which features had a higher influence on the 
 
 Steps ...: **Deadline Milestone 2 17.11.2022**
 
-*24.11.2023  - Perform initial analysis
+*24.11.2023  - Perform initial analysis*
 
-*28.11.2023 - Pause project work
+*28.11.2023 - Pause project work*
 
 *01.12.2023: Deadline Homework 2*
 
 *15.12.2023: Complete notebook and start writing the blog*
 
-*18.12.2023 - Finalize data story
+*18.12.2023 - Finalize data story*
 
 Step ...: **Deadline Milestone 3 23.12.2022**
 
