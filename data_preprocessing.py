@@ -49,16 +49,15 @@ def clean_movie_metadata_dataset(drop_no_revenue = True):
     return box_office
 
 def extract_from_dictionary(df, column): 
-    all_genre = set()
-
+    all_values = set()
 
     # find set of all genre
     for i in range(len(df)): 
         genres = eval(df[column].iloc[i]).values()
-        all_genre.update(list(genres))
+        all_values.update(list(genres))
 
     # set column corresponding to genre to 1 or 0 if the genre is present
-    for g in all_genre: 
+    for g in all_values: 
         df[g] = df[column].str.contains(g)
 
     new_column_names = []
