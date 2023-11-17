@@ -37,6 +37,12 @@ To see how movie plots evolved over time, we use three approaches:
 
 ### Plot complexity
 
+To assess the complexity of a movie, we have used the following methodologies:
+
+Summary Length: Evaluate the length of each movie's plot summary. Longer summaries typically suggest a more complex plot.
+TF-IDF Analysis: Apply Term Frequency-Inverse Document Frequency (TF-IDF) to identify unique or significant words in each summary. A broader range of TF-IDF scores within a summary indicates a more complex plot.
+Text Coherence Measurement: Assess the coherence of the text, which reflects the logical and connection of ideas. This is done by analyzing semantic similarity between consecutive sentences using sentence embeddings (like Sentence Transformers). The variation in cosine similarity scores between sentences can indicate the plot's complexity and coherence.
+
 ### Plot similarity
 After text preprocesing, plot similarity can be computed in two ways:
 - **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly.A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
@@ -52,7 +58,7 @@ For this part, we will use the [dataset imdb ratings over time](#Dataset-imdb-ra
 
 ### Most influential feature for revenue over time
 
-Finally, to answer the question of which features had a higher influence on the revenue through the years we grouped the movies in 10 years groups (e.g. from 1920 to 1930 etc.). Then we regressed over the revenue in each of these groups and sorted the coefficient to understand which were the more relevant features in each year group. 
+Finally, to answer the question of which features had a higher influence on the revenue through the years we grouped the movies in 10 years groups (e.g. from 1920 to 1930, etc.). Then we regressed over the revenue in each of these groups and sorted the coefficient to understand which were the more relevant features in each year group. 
 
 ## Timeline and organization
 
@@ -64,7 +70,7 @@ Steps ...: **Deadline Milestone 2 17.11.2022**
 
 Step ...: **Deadline Milestone 3 23.12.2022**
 
-### Organization within team
+### Organization within the team
 
 <table class="tg" style="table-layout: fixed; width: 342px">
 <colgroup>
