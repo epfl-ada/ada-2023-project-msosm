@@ -240,37 +240,28 @@ def scrape_through_the_years(imdb_id):
 
 
 if __name__ == "__main__": 
-    # date = '20181001'
-    bs4_html = get_html_imdb_webpage('tt0048644', '20110708')
+
+    # scraping script
+    res = pd.read_csv('MovieSummaries/movies_imdb_ids.csv')
+    dates = res['release date'].apply(lambda x : pd.to_datetime( x, format='%Y-%m-%d', errors='coerce')).copy(deep = True)
+    res.loc[:,'release date'] = dates
+    res = res.dropna(subset=['release date']).copy()
+
+    res = res.loc[res['release date'] > datetime(2004, 1, 1)]
+    result_df = pd.DataFrame()
+
+    for index, row in res.iloc[:100].iterrows():
+
+        print('scraping', row['tconst'], row['release date'])
+
+        try: 
+            # TODO it would be better to have two datasets: one for number of voters and the others for the ratings
+            dates, ratings, num_voters = scraper_review_next_and_five_years(row['tconst'], row['release date'])
+            df = pd.DataFrame([ratings, num_voters], columns=['first_date', 'second_date'], index = [row['tconst'] + '_ratings', row['tconst'] + '_number_voters'])
+            result_df = pd.concat([df, result_df],  sort=False)
+        except Exception as e: 
+            print(e)
 
 
-    print(fetcher(bs4_html, int(20110708)))
-    # rating_span = bs4_html.find('span', class_='rating-rating')
-    # rating = rating_span.text
-    # print(rating)
-
-
-
-
-#     dates, ratings, num_voters = scrape_through_the_years('tt0002894')
-# # 
-#     print('dates', dates)
-#     print('ratings', ratings)
-#     print('number of voters', num_voters)
-
-
-    # res = pd.read_csv('MovieSummaries/movies_imdb_ids.csv')
-
-    # result_df = pd.DataFrame()
-
-    # for const in res.tconst.values[:3]: 
-    #     try: 
-    #         dates, ratings, num_voters = scrape_through_the_years(const)
-    #     except Exception as e: 
-    #         print(e)
-    #     print(const, len(dates))
-    #     df = pd.DataFrame([b, c], columns=a)
-    #     result_df = pd.concat([df, result_df], ignore_index=True, sort=False)
-
-    # result_df
-
+    print(result_df)
+    result_df.to_csv('imbd_ratings.csv')
