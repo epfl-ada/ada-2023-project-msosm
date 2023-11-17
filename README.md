@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Since the inception of cinema in the late nineteenth century, movies have undergone a remarkable metamorphosis, evolving from silent, black-and-white motion pictures to the vibrant, immersive, and captivating films of today. With this project, we aim to gain a deeper understanding of these changes with an analysis of movies from different points of view. Firstly, we'll discuss the changes in the complexity of the plots and the increase/decrease of similarity between plots over time. Secondly, we'll look at the movie metadata to analyze what makes a movie age faster (and be forgotten more quickly) and which are the features with lead to higher revenues in different historical periods. 
+Movies have transformed significantly in the last century progressing from silent black-and-white films to today's vibrant and captivating productions. With this project, we aim to gain a deeper understanding of these changes with an analysis of movies from different points of view. Firstly, we'll discuss the changes in the complexity of the plots and the increase/decrease of similarity between plots over time. Secondly, we'll look at the movie metadata to analyze what makes a movie age faster (and be forgotten more quickly) and which are the features with lead to higher revenues in different historical periods. 
 
 ## Research questions
 
@@ -18,8 +18,6 @@ Since the inception of cinema in the late nineteenth century, movies have underg
 #### Dataset imdb ratings over time 
 
 In order to understand how the ratings of certain movies has evolved over time, we used an the API provided by [WaybackMachine](https://archive.org/help/wayback_api.php) to get a snapshot of the [IMBD.com](https://www.imdb.com/) page of each movie one year and five years after the release. In this way we were able to obtain the rating and the number of people who voted, while associating them with the IMBD identifier provided in the [IMDB database](https://datasets.imdbws.com/title.basics.tsv.gz) and with the original dataset through the name of the movie.
-
-<!-- imdb_ratings -->
 
 ## Methods
 
@@ -38,9 +36,8 @@ To see how movie plots evolved over time, we use three approaches:
 
 To assess the complexity of a movie, we have used the following methodologies:
 
-Summary Length: Evaluate the length of each movie's plot summary. Longer summaries typically suggest a more complex plot.
-TF-IDF Analysis: Apply Term Frequency-Inverse Document Frequency (TF-IDF) to identify unique or significant words in each summary. A broader range of TF-IDF scores within a summary indicates a more complex plot.
-Text Coherence Measurement: Assess the coherence of the text, which reflects the logical and connection of ideas. This is done by analyzing semantic similarity between consecutive sentences using sentence embeddings (like Sentence Transformers). The variation in cosine similarity scores between sentences can indicate the plot's complexity and coherence.
+Assess plot summary length; longer summaries suggest complexity. Use TF-IDF for unique words, indicating complexity with varied scores. Measure text coherence by analyzing semantic similarity between sentences using sentence embeddings (e.g., Sentence Transformers). Variations in cosine similarity scores indicate plot complexity and coherence.
+
 
 ### Plot similarity
 After text preprocesing, plot similarity can be computed in two ways:
@@ -50,14 +47,14 @@ After text preprocesing, plot similarity can be computed in two ways:
 
 ### Movie metadata preprocessing
 
-Firstly we removed all the movies without movie_box_office_reveneue (attempts to find datasets with additional box_office_revenue weren’t successful). We extracted the year from all the dates. Then we merged the movie.metadata dataset with the imbd one (which contained imbd id for each movie). Finally, we extracted the features that were encoded in a dictionary (language, genre, country) and added them to the dataset with onehot encoding. 
+Firstly we removed all the movies without movie_box_office_reveneue (attempts to find datasets with additional box_office_revenue weren’t successful). We extracted the year from all the dates. Then we merged the movie.metadata dataset with the imbd one. Finally, we extracted the features that were encoded in a dictionary (language, genre, country) and added them to the dataset with onehot encoding. 
 
 ### Movie aging
-For this part, we will use the [dataset imdb ratings over time](#Dataset-imdb-ratings-over-time). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the metadata of the movies on the difference in ratings (positive if the ratings increased and negative if they decreased over the years) to determine which features have greater influence on the popularity of a movie over time. 
+For this part, we will use the [dataset imdb ratings over time](#Dataset-imdb-ratings-over-time). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the metadata of the movies on the difference in ratings to determine which features have greater influence on the popularity of a movie over time. 
 
 ### Most influential feature for revenue over time
 
-Finally, to answer the question of which features had a higher influence on the revenue through the years we grouped the movies in 10 years groups (e.g. from 1920 to 1930, etc.). Then we regressed over the revenue in each of these groups and sorted the coefficient to understand which were the more relevant features in each year group. 
+Finally, to answer the question of which features had a higher influence on the revenue through the years we grouped by decades. Then we regressed over the revenue in each of these groups and sorted the coefficient to understand which were the more relevant features in each year group. 
 
 ## Timeline and organization
 
