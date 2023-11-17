@@ -2,6 +2,7 @@ import nltk
 from nltk.corpus import stopwords, wordnet
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem import WordNetLemmatizer
+import spacy
 
 from math import sqrt
 from collections import Counter
@@ -9,6 +10,8 @@ from collections import Counter
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
+nlp = spacy.load("xx_ent_wiki_sm")
+tokenizer = RegexpTokenizer(r'\w+')
 
 #####################################
 #  COSINE SIMILARITY HELPERS        #
@@ -25,13 +28,10 @@ def magnitude(vector):
 #####################################
 
 def is_name(word):
-    # Use WordNet to check if the word is a proper noun (Assuming person names are proper nouns)
-    synsets = wordnet.synsets(word)
-
-    for synset in synsets:
-        if synset.pos() == 'n':
+    doc = nlp(word)
+    for token in doc:
+        if token.ent_type_ == "PERSON":
             return True
-    
     return False
 
 def is_verb(word):
@@ -56,7 +56,6 @@ def cosine_similarity(v1, v2):
 
 def preprocess_text(text):
     # Tokenize the text and remove all punctuation
-    tokenizer = RegexpTokenizer(r'\w+')
     words = tokenizer.tokenize(text)
     
     stop_words = set(stopwords.words('english'))

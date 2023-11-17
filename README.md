@@ -26,6 +26,14 @@ This project aims to investigate on the above stated topic. With this goal in mi
 ### Plot complexity
 
 ### Plot similarity
+When evaluating plot similarity the goal is to obtain a sense of how original or unique a movie is. The method we have come up with analysis the plot summary through NLP resulting in a vector of words contained in the plot. Therefore, cosine distance can be computed between vectors of words to obtain a sense of how similar this movies are. The further in average a movie is from the rest, the more original it is.
+
+More concretely, the process starts by filtering out all movies with plots with less than 200 words, since we have considered that not enough information can be extracted from them. Then, plots are processed by removing all stopwords, tokenizing, lowercasing, eliminating people's name and normalizing all verbs to infinitive form. After this, frequency of words is computed and forming a vector of pairs ('word',frequency). This vector is limited to the 100 most common words, otherwise long plots would be more prone to be similar to others since having more words. Finally, the cosine distance between two movie vectors is computed. The more words with higher frequency the two vectors have in common the highest the cosine distance will be and therefore the more similar. A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
+
+#### Future implementations
+Some alternative and complementary ideas have been discussed amongst the members of the group. The proposed method lacks the capacity of verb generalization, for instance, it ignores the fact that "murder" and "kill" could be related to the same topic. Finding the latent topics in movie plots, we believe, would enhance the performance of cosine similarity since currently it does not capture synonym verbs as the same. Latent topics could be computed using Latent Dirilecht Allocation(LDA).
+
+Additionally, it would be interesting to come up with some clustering method for visualization and further data comprehension. In this way, we could observe big clusters of movies representing stereotypical movies(f.e: romantic comedies, war films)or small clusters for films less common. The bigger the cluster and the more a point is close to the center of it the less original is a movie. Still the method to achieve this is a bit unclear to us.
 
 ### Movie aging
 
