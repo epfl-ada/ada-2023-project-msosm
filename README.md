@@ -2,17 +2,10 @@
 
 ## Abstract
 
-Our research aim 
-Since the inception of cinema in the late nineteenth century, movies have undergone a remarkable metamorphosis, evolving from silent, black-and-white motion pictures to the vibrant, immersive and captivating films of today. 
-
-Technological advancements have played an essential role in shaping the cinematic landscape. The transition from silent films to the sound and color film revolutionized the aesthetics of these compositions. The introduction of digital technology further transformed the industry through super-realistic special effects and computer-generated imagery(CGI).
-
-In the present era, the ease of movie consumption has reached unprecented heights thanks to digital platforms and streaming services. While this accessibility has undeniably expanded the quantity of available content, there is an unhindered countereffect such a potential trade-off in quality. The increased pressure on filmmakers to produce mass appeal and palatable content may have a negative impact on artistic standards.
-
-
+Since the inception of cinema in the late nineteenth century, movies have undergone a remarkable metamorphosis, evolving from silent, black-and-white motion pictures to the vibrant, immersive, and captivating films of today. With this project, we aim to gain a deeper understanding of these changes with an analysis of movies from different points of view. Firstly, we'll discuss the changes in the complexity of the plots and the increase/decrease of similarity between plots over time. Secondly, we'll look at the movie metadata to analyze what makes a movie age faster (and be forgotten more quickly) and which are the features with lead to higher revenues in different historical periods. 
 
 ## Research questions
-This project aims to investigate on the above stated topic. With this goal in mind, some questions have been proposed to help us understand how movies have changed through time. The following interrogations will be answered during the project:
+This project aims to investigate the above stated topic. With this goal in mind, some questions have been proposed to help us understand how movies have changed through time. The following interrogations will be answered during the project:
 
 - Did the complexity of movie dialogues decrease over time? Can we find a correlation between the increase in smartphone usage and the decrease in attention span? 
 - Is it true that movies have become more similar in recent years? 
