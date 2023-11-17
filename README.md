@@ -41,7 +41,7 @@ Assess plot summary length; longer summaries suggest complexity. Use TF-IDF for 
 
 ### Plot similarity
 After text preprocesing, plot similarity can be computed in two ways:
-- **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly.A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
+- **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly. A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
 - **LDA and clustering**: Computing cosine distance with the frequency vectors lacks some complexity and fails to capture generalized topics. Using LDA algorithm, broaded topics can be extrapolated and more real similarity can be captured. Furthermore, it makes it easier for a clustering analysis by topic. In this way,  a movie which belongs to a big cluster and the closer it is to the center of the cluster, the less original is a movie.
  
 
@@ -62,9 +62,15 @@ Finally, to answer the question of which features had a higher influence on the 
 
 Steps ...: **Deadline Milestone 2 17.11.2022**
 
-*01.12.2022: Deadline Homework 2*
+*24.11.2023  - Perform initial analysis
 
-*18.12.2022: complete notebook and start writing the blog*
+*28.11.2023 - Pause project work
+
+*01.12.2023: Deadline Homework 2*
+
+*15.12.2023: Complete notebook and start writing the blog*
+
+*18.12.2023 - Finalize data story
 
 Step ...: **Deadline Milestone 3 23.12.2022**
 
@@ -80,7 +86,7 @@ Step ...: **Deadline Milestone 3 23.12.2022**
 
 - **Stefano C**
   - Plot complexity
-  - write blog story
+  - Write blog story
 
 - **Max**
   - Fully implement LDA
