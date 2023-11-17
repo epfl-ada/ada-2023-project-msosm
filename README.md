@@ -23,7 +23,7 @@ This project aims to investigate on the above stated topic. With this goal in mi
 
 ## Additional datasets
 
-#### Dataset imdb ratings over time {#imdb_ratings}
+#### Dataset imdb ratings over time 
 
 In order to understand how the ratings of certain movies has evolved over time, we used an the API provided by [WaybackMachine](https://archive.org/help/wayback_api.php) to get a snapshot of the [IMBD.com](https://www.imdb.com/) page of each movie one year and five years after the release. In this way we were able to obtain the rating and the number of people who voted, while associating them with the IMBD identifier provided in the [IMDB database](https://datasets.imdbws.com/title.basics.tsv.gz) and with the original dataset through the name of the movie.
 
@@ -53,7 +53,7 @@ Additionally, it would be interesting to come up with some clustering method for
 
 ### Movie aging
 
-For this part we will use the [dataset imdb ratings over time](#imdb_ratings). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the difference in ratings over different set of features and by looking at the coefficients we found the features which had greater influence on the aging of the movie. The set of features that we used are movie genre ect. 
+For this part we will use the [dataset imdb ratings over time](#Dataset-imdb-ratings-over-time). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the difference in ratings over different set of features and by looking at the coefficients we found the features which had greater influence on the aging of the movie. The set of features that we used are movie genre ect. 
 
 
 ## Timeline and organization
