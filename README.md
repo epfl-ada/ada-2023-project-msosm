@@ -1,11 +1,15 @@
 # Film Metamorphosis: from silent to ....?
 
 ## Abstract
+
+Our research aim 
 Since the inception of cinema in the late nineteenth century, movies have undergone a remarkable metamorphosis, evolving from silent, black-and-white motion pictures to the vibrant, immersive and captivating films of today. 
 
-Technological advancements have played an essential role in shaping the cinematic landscape.The transition from silent films to the sound anf color film revolutionized the aesthetics of these compositions. The introduction of digital technology further transformed the industry through super-realistic special effects and computer-generated imagery(CGI).
+Technological advancements have played an essential role in shaping the cinematic landscape. The transition from silent films to the sound and color film revolutionized the aesthetics of these compositions. The introduction of digital technology further transformed the industry through super-realistic special effects and computer-generated imagery(CGI).
 
 In the present era, the ease of movie consumption has reached unprecented heights thanks to digital platforms and streaming services. While this accessibility has undeniably expanded the quantity of available content, there is an unhindered countereffect such a potential trade-off in quality. The increased pressure on filmmakers to produce mass appeal and palatable content may have a negative impact on artistic standards.
+
+
 
 ## Research questions
 This project aims to investigate on the above stated topic. With this goal in mind, some questions have been proposed to help us understand how movies have changed through time. The following interrogations will be answered during the project:
@@ -19,7 +23,19 @@ This project aims to investigate on the above stated topic. With this goal in mi
 
 ## Additional datasets
 
+#### Dataset imdb ratings over time
+
+In order to understand how the ratings of certain movies has evolved over time, we used an the API provided by [WaybackMachine](https://archive.org/help/wayback_api.php) to get a snapshot of the [IMBD.com](https://www.imdb.com/) page of each movie one year and five years after the release. In this way we were able to obtain the rating and the number of people who voted, while associating them with the IMBD identifier provided in the [IMDB database](https://datasets.imdbws.com/title.basics.tsv.gz) and with the original dataset through the name of the movie.
+
+<!-- imdb_ratings -->
+
 ## Methods
+
+### Movie metadata preprocessing
+
+Firstly we removed all the movies without movie_box_office_reveneue (attempts to find datasets with additional box_office_revenue weren’t successful). 
+We then normalized the format of the date, while dropping the one which didn’t respect the %Y-%m-%d' format. 
+We then merged the movie.metadata dataset with the imbd one (which contained imbd id for each movie). Finally we extracted the features which were encoded in a dictionary (language, genre, country) and added them to the dataset with onehot encoding. 
 
 ### Sentiment analysis 
 
@@ -36,6 +52,9 @@ Some alternative and complementary ideas have been discussed amongst the members
 Additionally, it would be interesting to come up with some clustering method for visualization and further data comprehension. In this way, we could observe big clusters of movies representing stereotypical movies(f.e: romantic comedies, war films)or small clusters for films less common. The bigger the cluster and the more a point is close to the center of it the less original is a movie. Still the method to achieve this is a bit unclear to us.
 
 ### Movie aging
+
+For this part we will use the [dataset imdb ratings over time](#imdb_ratings). We took the difference between the ratings for one and five years after release. This shows which movie became more or less popular over time. Then we regressed the difference in ratings over different set of features and by looking at the coefficients we found the features which had greater influence on the aging of the movie. The set of features that we used are movie genre ect. 
+
 
 ## Timeline and organization
 
