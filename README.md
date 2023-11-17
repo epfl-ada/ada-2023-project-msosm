@@ -49,8 +49,8 @@ To see how movie plots evolved over time, we use three approaches. In the first 
 
 ### Plot similarity
 After text preprocesing, plot similarity can be computed in two ways:
-	- **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly.A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
-	- **LDA and clustering**: Computing cosine distance with the frequency vectors lacks some complexity and fails to capture generalized topics. Using LDA algorithm, broaded topics can be extrapolated and more real similarity can be captured. Furthermore, it makes it easier for a clustering analysis by topic. In this way,  a movie which belongs to a big cluster and the closer it is to the center of the cluster, the less original is a movie.
+- **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly.A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
+- **LDA and clustering**: Computing cosine distance with the frequency vectors lacks some complexity and fails to capture generalized topics. Using LDA algorithm, broaded topics can be extrapolated and more real similarity can be captured. Furthermore, it makes it easier for a clustering analysis by topic. In this way,  a movie which belongs to a big cluster and the closer it is to the center of the cluster, the less original is a movie.
  
 ### Movie aging
 
