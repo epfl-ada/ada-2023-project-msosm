@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import requests
 from bs4 import BeautifulSoup
-from google_trend_scraper import scrape_save_movies_trends
+# from google_trend_scraper import scrape_save_movies_trends
 import re
 import time
 
@@ -59,12 +59,12 @@ def fetcher(string, date):
         result = extract_vote_number_ratings(c, string)
         # print('c=',c, 'date', date)
     except Exception as e:
-        print('c=',c, e)
+        # print('c=',c, e)
         try:
             result = extract_vote_number_ratings(c + 1, string)
             # print('c=',c +1 , 'date', date)
         except Exception as e:
-            print('c=',c +1 , e)
+            # print('c=',c +1 , e)
             try:
                 result = extract_vote_number_ratings(c - 1, string)
                 # print('c=',c -1, 'date', date)
@@ -158,12 +158,15 @@ def scraper_review_next_and_five_years(imdb_id, pub_year):
     num_voters_list = []
     scraped_dates = []
 
+    if type(pub_year) == str: 
+        pub_year = datetime.strptime(pub_year, '%Y-%m-%d')
+
     # most recent movie in the df is end of 2012, so both dates will be in the past
     next_year = pub_year + timedelta(days=365)
     five_years = pub_year + timedelta(days=365*5)
 
     for date in [next_year, five_years]: 
-
+        date = date.strftime('%Y%m%d')
         try:
             bs4_html = get_html_imdb_webpage(imdb_id, date)
             rating, num_voters = fetcher(bs4_html, int(date))
