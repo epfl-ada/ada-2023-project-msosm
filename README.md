@@ -17,7 +17,7 @@ Movies have transformed significantly in the last century progressing from silen
 
 #### Dataset imdb ratings over time 
 
-In order to understand how the ratings of certain movies has evolved over time, we used an the API provided by [WaybackMachine](https://archive.org/help/wayback_api.php) to get a snapshot of the [IMBD.com](https://www.imdb.com/) page of each movie one year and five years after the release. In this way we were able to obtain the rating and the number of people who voted, while associating them with the IMBD identifier provided in the [IMDB database](https://datasets.imdbws.com/title.basics.tsv.gz) and with the original dataset through the name of the movie.
+In order to understand how the ratings of certain movies has evolved over time, we used an the API provided by [WaybackMachine](https://archive.org/help/wayback_api.php) to get a snapshot of the [IMBD.com](https://www.imdb.com/) page of each movie one year and five years after the release. In this way we were able to obtain the rating and the number of people who voted, while associating them with the IMBD identifier provided in the [IMDB database](https://datasets.imdbws.com/title.basics.tsv.gz) and with the original dataset through the name of the movie. [Movies budget](https://www.kaggle.com/datasets/danielgrijalvas/movies?select=movies.csv) were obtained from Kaggle. In order to adjust for inflation we also downloaded the [CPI data](https://www.bls.gov/cpi/data.htm) from the U.S Bureau of Labour and Statistics.
 
 ## Methods
 
