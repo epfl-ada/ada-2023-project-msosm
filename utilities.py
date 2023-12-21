@@ -25,3 +25,5 @@ def plot_25_movies_through_time(df, feature):
     lower_bound = top_25_movies_grouped - top_25_movies_grouped_std * 1.96 / 5
     upper_bound = top_25_movies_grouped + top_25_movies_grouped_std * 1.96  / 5
     plt.fill_between(top_25_movies_grouped.index, lower_bound, upper_bound, alpha=.3)
+
+    plt.xlabel('Year')
