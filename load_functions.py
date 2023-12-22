@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+import os
 from datetime import datetime
 
 def load_movie_summaries(data_folder):
@@ -47,3 +48,20 @@ def extract_year(date_str):  # float year
                 return date.year
             except ValueError:
                 return None
+            
+            
+def load_scripts(folder_path, movie_names):
+    scripts = {}
+    for filename in os.listdir(folder_path):
+        # check if the file matches the specified format and is in the provided dataset, construct the path
+        if filename.startswith('Script_') and filename.endswith('.txt'):
+            movie_name_from_filename = filename[len('Script_'):-len('.txt')]
+            if movie_name_from_filename in movie_names:
+                file_path = os.path.join(folder_path, filename)
+            
+                # read from the file
+                with open(file_path, 'r') as file:
+                    file_contents = file.read()
+                    scripts[movie_name_from_filename] = file_contents
+
+    return scripts
