@@ -1,5 +1,7 @@
 # Frame by Frame: The Kaleidoscopic Evolution of Cinema Over the Decades
 
+Visit our datastory blog in: [Frame by Frame: The Kaleidoscopic Evolution of Cinema Over the Decades](https://stefanoviel.github.io/moviesevolution/)
+
 ## Abstract
 
 Movies have transformed significantly in the last century progressing from silent black-and-white films to today's vibrant and captivating productions. With this project, we aim to gain a deeper understanding of these changes with an analysis of movies from different points of view. Firstly, we'll discuss the changes in (the complexity of) movie plots and the increase/decrease of similarity between plots over time. Secondly, we'll look at the movie metadata to analyze what makes a movie age faster (and be forgotten more quickly) and which are the features with lead to higher revenues in different historical periods.
