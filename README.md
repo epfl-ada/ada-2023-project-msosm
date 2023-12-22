@@ -1,4 +1,4 @@
-# Film Metamorphosis: from silent to ....?
+# Frame by Frame: The Kaleidoscopic Evolution of Cinema Over the Decades
 
 ## Abstract
 
@@ -21,7 +21,7 @@ In order to understand how the ratings of certain movies has evolved over time, 
 
 ## Methods
 
-### Evolution movie plots and plot similarity
+### Evolution movie plots and plot originality
 #### Plot preprocessing
 First we filter out all movies with plots with less than 200 words. Then we use the NLTK library to tokenize the plots, filter out stopwords, lowercasing and stemming. We also filter out people's names. We then use the Bag-Of-Words model to represent the plots. We then use the gensim library to perform Latent Dirichlet Allocation (LDA). The LDA gives us the topics (we pick the amount) as a distribution over words, and for each movie plot how it is distributed over the topics. We can easily interpret the topics by looking at the most frequent words.
 
@@ -39,11 +39,10 @@ To assess the complexity of a movie, we have used the following methodologies:
 Assess plot summary length; longer summaries suggest complexity. Use TF-IDF for unique words, indicating complexity with varied scores. Measure text coherence by analyzing semantic similarity between sentences using sentence embeddings (e.g., Sentence Transformers). Variations in cosine similarity scores indicate plot complexity and coherence.
 
 
-### Plot similarity
-After text preprocesing, plot similarity can be computed in two ways:
-- **Cosine distance**: The bag of words obtained is reduced to the first 100 words, avoiding long plots being more prone to be more similar to other plots due to its increased number of words. Then, the cosine distance between two plots can be computed fairly. A cosine distance of 1 would mean the two movies are identical, and a value of 0 would represent no similarity at all.
-- **LDA and clustering**: Computing cosine distance with the frequency vectors lacks some complexity and fails to capture generalized topics. Using LDA algorithm, broaded topics can be extrapolated and more real similarity can be captured. Furthermore, it makes it easier for a clustering analysis by topic. In this way,  a movie which belongs to a big cluster and the closer it is to the center of the cluster, the less original is a movie.
- 
+### Plot originality
+After performing the LDA, we obtain a 6 component vector with a probability distribution for each topic. We have decided to compute plot originality using **cosine similarity** using this vector. For every movie, we compute the cosine similarity to those released in the same year, by that we aim to grasp at how original were movies made in that year, or on the other end how stereotypical.
+
+The interpretation obtained might be a bit counter intuitive. One can expect that movies with more than one topic to be more similar to others since they will have more in common. We have defined those movies as original since they represent a mix of topics, creating a unique thematical narrative. On the other hand, those movies with low cosine similarity will be pure stereotypical movies being only close to the ones of the same topic. For more information on the method dive into the Jupyter Notebook to understand furthermore how we use it and the results we obtain. 
 
 ### Movie metadata preprocessing
 
