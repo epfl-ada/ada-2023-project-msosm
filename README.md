@@ -39,9 +39,7 @@ Furthermore, after the plots are preprocessed we will represent them as a Bag of
 
 #### LDA
 
-Now we can finally get into the LDA analysis! For this we use the gensim library. LDA computes topics as probability distributions over words, and then represents the text documents as probability distributions over these topics. An important parameter that we have to set ourselves is the amount of topics. We will perform LDA for 6, 8 and 10 topics. Finally, after meticulous evalution we decide to proceed with the analysis with the 6-topic LDA. Dive into our Jupyter Notebook to figure out what are the found topics.
-
-### Evolution of movie topic
+Now we can finally get into the LDA analysis! For this we use the gensim library. LDA computes topics as probability distributions over words, and then represents the text documents as probability distributions over these topics. An important parameter that we have to set ourselves is the amount of topics. We will perform LDA for 6, 8 and 10 topics. Finally, after meticulous evalution we decide to proceed with the analysis with the 6-topic LDA. Dive into our Jupyter Notebook to figure out what are the found topics. Then we look at the distribution of movies over these topics has evolved over time, and try to link this to cultural events.
 
 ### Plot originality
 
